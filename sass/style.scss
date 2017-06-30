@@ -1,0 +1,488 @@
+/*
+Theme Name: La Casita Verde
+Author: Corey Tegeler
+Author URI: http://coreytegeler.com
+Version: 1.1
+*/
+@import 'https://fonts.googleapis.com/css?family=Raleway:600,600i,700,700i,800,800i,900,900i';
+@import 'vars';
+html, body {
+	background-color: $light;
+	margin: 0;
+	// font-family: Raleway, Arial, Helvetica, sans-serif;
+	font-family: Helvetica, sans-serif;
+	font-weight: 600;
+	color: black;
+	@include baseText;
+}
+header, h1, h2, h3, h4 {
+	font-weight: 900;
+	margin: 0;
+}
+main {
+	width: 100%;
+	height: 100%;
+  min-height: 50vh;
+  display: block;
+}
+h1 {
+	@include xLargeText;
+	// text-transform: uppercase;
+	display: table;
+	margin: auto;
+	padding: 0;
+}
+h2 {
+	@include largeText;
+}
+h3 {
+	@include mediumText;
+}
+em, strong {
+	font-weight: 800;	
+}
+ul, ol {
+	padding: 0;
+	margin: 0;
+	li {
+		margin: 0 0 0 1em;
+	}
+}
+p {
+	margin: 0 0 1em 0;
+	&:last-of-type {
+		margin: 0;
+	}
+}
+a, a:visited {
+	color: $dark;
+	&:hover {
+		color: black;
+	}
+}
+.content {
+	line-height: 1.8em;
+}
+header {
+	display: flex;
+  padding: 2em 0 3em 0;
+	.inner {
+		width: 100%;
+		height: 14em;
+		display: table;
+  	margin: auto;
+  	position: relative;
+  	.text {
+  		height: 100%;
+  		display: table;
+  		margin: auto;
+  	}
+  	.circle {
+  		display: none;
+	    width: 38em;
+	    height: 38em;
+	    border-radius: 50%;
+	    // border: 0.25em solid $green;
+	    background: yellow;
+	    mix-blend-mode: multiply;
+	    position: absolute;
+	    left: calc(50% - 19.25em);
+	    top: -22em;
+	    z-index: 1;
+  	}
+    .wrap {
+    	display: flex;
+			padding-bottom: 1em;
+    }
+	}
+	a.logo {
+		width: 10em;
+		height: 10em;
+		display: block;
+		background-image: url(images/logo.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+	a.logotext {
+		width: 100%;
+		height: 2em;
+		display: table;
+		margin: 0 auto 1em auto;
+		text-align: center;
+		text-decoration: none;
+	}
+	nav {
+    display: flex;
+    flex-direction: column-reverse;
+		a {
+			display: table;
+			text-decoration: none;
+			color: $dark;
+		}
+	}
+}
+.sign {
+	position: absolute;
+	right: 2em;
+	top: 2em;
+	background: red;
+	width: 6em;
+	height: 6em;
+	border-radius: 50%;
+	transform: rotate(15deg);
+	.inner {
+		
+	}
+}
+.row {
+	display: flex;
+	margin: 0 auto 2em auto;
+	&:last-of-type {
+		margin: auto;
+	}
+	.cell {
+		
+	}
+	.text {
+		width: calc(100% - 4em);
+	  max-width: 30em;
+	  display: table;
+	  padding: 0 2em;
+	  margin: auto;
+	}
+	&.thirds {
+		width: calc(100% - 4em);
+    max-width: 50em;
+    padding: 0 2em;
+		h2 {
+			text-align: right;
+			float: right;
+			border-top: .225em solid;
+	    padding-top: .25em;
+	    margin-top: .225em;
+		}
+		.text {
+			display: block;
+			margin: 0;
+		}
+		.one {
+			width: calc(100%/3);
+		}
+		.two {
+			width: calc(100%/1.5);
+		}
+		.full {
+			width: 100%;
+			.text {
+				max-width: 100%;
+				display: table;
+				margin: auto;
+				text-align: center;
+			}
+		}
+	}
+}
+.vine {
+	width: 100%;
+	height: 2em;
+	display: table;
+	// margin: 2em auto;
+	// background-image: url(images/vine.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	display: none;
+	&:last-of-type {
+		display: none;
+	}
+}
+.blocks {
+	width: 96vw;
+	padding: 2vw;
+	display: table;
+	.block {
+		width: 50%;
+		height: 40vw;
+		display: flex;
+		float: left;
+		position: relative;
+		overflow: hidden;
+		.title {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			position: absolute;
+			left: 0;
+			top: 0;
+			color: $light;
+			transition: transform 100ms ease-in-out;
+			.center {
+				width: 95%;
+				display: table;
+				margin: auto;
+			}
+			h1, h2 {
+				text-align: center;
+			}
+		}
+		a {
+	    position: absolute;
+	    left: 2vw;
+	    top: 2vw;
+		}
+		// &.bg {
+		a {
+			width: calc(100% - 4vw);
+	    height: 36vw;
+			filter: saturate(100%);
+			mix-blend-mode: darken;
+			background-color: $green;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			// transition: filter 300ms ease-in-out, background-color 300ms ease-in-out;
+			&:hover {
+				// filter: saturate(0%);
+				background-color: transparent;
+				.title {
+					color: $green;
+				}
+			}
+		}
+			// h1, h2 {
+			// 	// text-shadow:
+			// 	// 	-1px -1px 0 rgba($dark, .2),
+			// 	// 	1px -1px 0 rgba($dark, .2),
+			// 	// 	-1px 1px 0 rgba($dark, .2),
+			// 	// 	1px 1px 0 rgba($dark, .2);
+			// }
+		// &.border {
+		// 	a {
+		//     // width: calc(100% - 6vw);
+		//     // height: calc(100% - 6vw);
+		//     width: calc(100% - 4vw);
+		//     height: calc(100% - 4vw);
+		//     // height: 3vw;
+		// 		// border: solid 1vw $dark;
+		// 		display: block;
+		// 		background-color: rgba($green, 1);
+		// 		transition: background-color 300ms ease-in-out;
+		// 		&:hover {
+		// 			background-color: rgba($green, .8);
+		// 		}
+		// 	}
+		// 	h1, h2 {
+		// 		color: $dark;
+		// 	}
+		// }
+	}
+}
+#address {
+	position: relative;
+	// background-image: url(images/sign.png);
+	// background-repeat: no-repeat;
+	// background-position: right center;
+	// background-size: auto 100%;
+	border: solid $dark;
+	border-width: 1vw 0;
+	h1 {
+		width: calc(100% - 2em);
+		padding: 1em;
+		color: $dark;
+	}
+}
+#map {
+	height: 30em;
+}
+
+.carousel {
+	width: 100%;
+	min-height: 80vh;
+	display: table;
+	margin: auto;
+	padding: 0;
+	position: relative;
+	overflow: visible;
+	content: '80vh';
+	&[data-direction="left"] .slide.current {
+		transform: translateX(.25em);
+	}
+	&[data-direction="right"] .slide.current {
+		transform: translateX(-.25em);
+	}
+	.slides {
+		height: 80vh;
+		position: absolute;
+		left: 0;
+		top: 0;
+		.slide {
+			width: auto;
+			height: 100%;
+			position: relative;
+			float: left;
+			transition: transform 200ms ease-in-out;
+			.image {
+				width: 100%;
+				height: 100%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;		
+			}
+			.caption {
+				// max-width: $tabletWidth;
+				.inner {
+					width: 100%;
+					max-width: $tabletWidth;
+					display: table;
+					margin: auto;
+				}
+				width: calc(100% - 2em);
+				position: absolute;
+				top: 100%;
+				padding: 1em;
+				display: table;
+				margin: auto;
+				@include smallText;
+			}
+		}
+	}
+	.arrow {
+		width: 33.33%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		font-family: Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		z-index: 100;
+		&:hover {
+			cursor: pointer;
+		}
+		&.left {
+			left: 0;
+		}
+		&.right {
+			right: 0;
+		}
+	}
+}
+
+footer {
+	width: calc(100% - 2em);
+	padding: 2em 1em;
+	margin-top: 6em;
+	background-color: $dark;
+	color: $green;
+	font-weight: 900;
+	.inner {
+		display: table;
+		margin: .25em auto 0 auto;
+		@include largeText;
+		.cell {
+			float: left;
+			margin: 0 .25em .25em .25em;
+			a {
+				text-decoration: none; 
+			}
+			.icon {
+				float: left;
+				position: relative;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				a {
+					padding: 0 .25em;
+					svg {
+						width: auto;
+						height: 1em;
+					}
+				}
+			}
+		}
+	}
+}
+
+body.home {
+	footer {
+		margin-top: 0 !important;
+	}
+}
+body.art {
+	.row.text {
+		width: calc(100% - 2em);
+		padding: 1em;
+		p, h2 {
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
+body.project {
+	.title {
+		max-width: $laptopWidth;
+		display: table;
+		margin: auto;
+		padding: .255em 0;
+		h1 {
+			border-top: .255em solid;
+			padding: .255em 0 .5em 0;
+			margin: .255em;
+		}
+	}
+}
+@include tablet {
+	.row {
+		display: block;
+		.cell {
+			width: 100% !important;
+			display: table !important;
+			h2 {
+				width: 100%;
+				float: none;
+				text-align: left;
+				margin-bottom: .5em;
+			}
+			.text {
+				width: 100%;
+				padding: 0;
+			}
+		}
+	}
+	.blocks {
+		.block {
+			width: 100%;
+			height: 50vw;
+			&:not(:last-of-type) {
+				margin-bottom: 2vw;
+			}
+			a {
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+			}
+			&.bg a {
+				width: 100%;
+				height: 100%;
+			}
+			&.border a {
+				width: 100%;
+		    height: 100%;
+			}
+		}
+	}
+	.carousel {
+		min-height: 50vh;
+		content: '50vh';
+		.slides {
+			height: 50vh;
+		}
+	}
+	#address h1 {
+		width: calc(100% - .5em);
+		padding: .25em;
+	}
+}

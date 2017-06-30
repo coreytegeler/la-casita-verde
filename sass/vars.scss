@@ -1,0 +1,58 @@
+$light: #f8f2e1;
+$medium: #707377;
+$dark: #2b1010;
+$green: #33eb74;
+
+@mixin baseText {
+	font-size: 21px;
+	line-height: 1.3em;
+	@include tablet {
+		font-size: 15px;
+	}
+}
+@mixin smallText {
+	font-size: 1em;
+	line-height: 1.2em;
+}
+@mixin mediumText {
+	font-size: 1.3em;
+	line-height: 1.3em;
+}
+@mixin largeText {
+	font-size: 2em;
+	line-height: 1.2em;
+}
+@mixin xLargeText {
+	font-size: 3em;
+	line-height: 1.2em;
+}
+
+$phoneWidth: 480px;
+$tabletWidth: 768px;
+$laptopWidth: 1024px;
+$desktopWidth: 1440px;
+$maxWidth: 800px;
+
+@mixin phone {
+	@media (max-width: #{$phoneWidth}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+  @media (max-width: #{$tabletWidth}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: #{$laptopWidth}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktopWidth}) {
+    @content;
+  }
+}
