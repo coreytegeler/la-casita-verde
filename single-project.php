@@ -8,7 +8,7 @@ global $post;
 $id = $post->ID;
 $title = $post->post_title;
 echo '<div class="title">';
-	echo '<h1>' . $title . '</h1>';
+	echo '<h2>' . $title . '</h2>';
 echo '</div>';
 if( have_rows( 'images', $id ) ) {
 	echo '<div class="row carousel">';

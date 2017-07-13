@@ -25,7 +25,8 @@ main {
   width: 100%;
   height: 100%;
   min-height: 50vh;
-  display: block; }
+  display: block;
+  overflow-x: hidden; }
 
 h1 {
   font-size: 3em;
@@ -47,9 +48,11 @@ em, strong {
 
 ul, ol {
   padding: 0;
-  margin: 0; }
+  margin: 0 0 .5em 0; }
   ul li, ol li {
-    margin: 0 0 0 1em; }
+    margin: 0;
+    padding: .5em 0 0 0;
+    list-style: none; }
 
 p {
   margin: 0 0 1em 0; }
@@ -59,7 +62,7 @@ p {
 a, a:visited {
   color: #2b1010; }
   a:hover, a:visited:hover {
-    color: black; }
+    color: #33eb74; }
 
 .content {
   line-height: 1.8em; }
@@ -68,71 +71,72 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 2em 0 3em 0; }
+  padding: 2em 0; }
   header .inner {
-    width: 100%;
+    width: calc(100% - 4em);
+    max-width: 50em;
     height: 14em;
     display: table;
     margin: auto;
+    padding: 0 2em;
     position: relative; }
-    header .inner .text {
-      height: 100%;
-      display: table;
-      margin: auto; }
-    header .inner .circle {
-      display: none;
-      width: 38em;
-      height: 38em;
-      border-radius: 50%;
-      background: yellow;
-      mix-blend-mode: multiply;
-      position: absolute;
-      left: calc(50% - 19.25em);
-      top: -22em;
-      z-index: 1; }
     header .inner .wrap {
+      display: table;
+      margin: auto;
+      padding: 0; }
+    header .inner a.logo {
+      width: 10em;
+      height: 10em;
+      display: block;
+      float: left; }
+      header .inner a.logo svg {
+        width: 100%;
+        height: 100%; }
+        header .inner a.logo svg, header .inner a.logo svg * {
+          fill: #33eb74; }
+      header .inner a.logo:hover svg, header .inner a.logo:hover svg * {
+        fill: #2b1010; }
+    header .inner nav, header .inner ul {
+      height: 10em;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      padding-bottom: 1em; }
-  header a.logo {
-    width: 10em;
-    height: 10em;
-    display: block;
-    background-image: url(images/logo.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain; }
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+          -ms-flex-direction: column-reverse;
+              flex-direction: column-reverse;
+      float: left; }
+      header .inner nav a, header .inner nav li, header .inner ul a, header .inner ul li {
+        display: table;
+        text-decoration: none;
+        color: #2b1010; }
   header a.logotext {
-    width: 100%;
     height: 2em;
     display: table;
     margin: 0 auto 1em auto;
     text-align: center;
-    text-decoration: none; }
-  header nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse; }
-    header nav a {
-      display: table;
-      text-decoration: none;
+    text-decoration: none;
+    color: #33eb74; }
+    header a.logotext:hover {
       color: #2b1010; }
-
-.sign {
-  position: absolute;
-  right: 2em;
-  top: 2em;
-  background: red;
-  width: 6em;
-  height: 6em;
-  border-radius: 50%;
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg); }
+  header .sign {
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    width: 6em;
+    height: 6em; }
+    header .sign a {
+      display: table;
+      -webkit-transform: rotate(15deg);
+              transform: rotate(15deg); }
+      header .sign a svg {
+        width: 100%; }
+      header .sign a:hover svg {
+        fill: #33eb74; }
+  header.hover a.logo svg, header.hover a.logo svg * {
+    fill: #2b1010; }
+  header.hover a.logotext {
+    color: #2b1010; }
 
 .row {
   display: -webkit-box;
@@ -240,8 +244,8 @@ header {
   border: solid #2b1010;
   border-width: 1vw 0; }
   #address h1 {
-    width: calc(100% - 2em);
-    padding: 1em;
+    width: calc(100% - 1em);
+    padding: .5em;
     color: #2b1010; }
 
 #map {
@@ -359,7 +363,6 @@ body.project .title {
   margin: auto;
   padding: .255em 0; }
   body.project .title h1 {
-    border-top: .255em solid;
     padding: .255em 0 .5em 0;
     margin: .255em; }
 

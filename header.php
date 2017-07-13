@@ -16,55 +16,31 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
-
-<body <?php body_class( $page_slug ); ?>>
-<header>
-	<div class="inner">
-		<div class="circle"></div>
-		<div class="text">
-			<div class="wrap">
-				<a class="logo" href="<?php echo site_url() ?>"></a>
-				<nav role="navigation">
-					<?php
-					$nav_links = array_reverse( wp_get_nav_menu_items( 'nav' ) );
-					foreach ( (array) $nav_links as $key => $link ) {
-						echo '<a href="' . $link->url . '">' . $link->title . '</a>';
-					}
-					?>
-				</nav>
-			</div>
-			<a class="logotext" href="<?php echo site_url() ?>">
-				<h2>La Casita Verde</h2>
-			</a>
-		</div>
-	</div>
-</header>
+<body <?php echo body_class( $page_slug ) ?>>
 <?php
-$about = get_page_by_path( 'about' );
-if( have_rows( 'open_hours', $about ) ) {
-  while ( have_rows( 'open_hours', $about ) ) : the_row();
-    $day = get_sub_field( 'day' );
-    $open = get_sub_field( 'open' );
-    $close = get_sub_field( 'close' );
-    $hours = [$open => $close];
-    if( $day && $open && $close ) {
-	    $openHoursArray[$day][$open] = $close;
-	  }
-  endwhile;
-}
-
-$timestamp = time();
-$status = 'Closed';
-$currentTime = ( new DateTime() )->setTimestamp( $timestamp );
-// loop through time ranges for current day
-foreach ( $openHoursArray[date( 'D', $timestamp )] as $startTime => $endTime ) {
-  $startTime = DateTime::createFromFormat( 'h:i A', $startTime );
-  $endTime   = DateTime::createFromFormat( 'h:i A', $endTime );
-  if ( ( $startTime < $currentTime ) && ( $currentTime < $endTime ) ) {
-    $status = 'Open';
-    break;
-  }
-}
-?>
-<div class="sign" data-status="<?php echo $status; ?>">We're <?php echo $status; ?></div>
+echo '<header>';
+	echo '<div class="inner">';
+		echo '<div class="wrap">';
+			echo '<a class="logo hover" href="' . site_url() . '">';
+				$logoSvg = get_template_directory_uri() . '/images/logo.svg';
+			  echo file_get_contents( $logoSvg );
+			echo '</a>';
+			echo '<nav role="navigation">';
+				$nav_links = array_reverse( wp_get_nav_menu_items( 'nav' ) );
+				foreach ( (array) $nav_links as $key => $link ) {
+					echo '<a href="' . $link->url . '">' . $link->title . '</a>';
+				}
+			echo '</nav>';
+		echo '</div>';
+		echo '<a class="logotext hover" href="' .  site_url() . '">';
+			echo '<h1>La Casita Verde</h1>';
+		echo '</a>';
+	echo '</div>';
+	$about_url = get_permalink( get_page_by_path( 'about' ) );
+	$svg = get_template_directory_uri() . '/images/' . is_open() . '.svg';
+  echo '<div class="sign" data-status="' . is_open() . '">';
+    echo '<a href="' . $about_url . '">' . file_get_contents( $svg ) . '</a>';
+  echo '</div>';
+  ?>
+</header>
 <main>

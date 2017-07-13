@@ -22,5 +22,11 @@
 			</div>
 		</div>
 	</footer>
+	<div id="palette">
+		<div class="light"></div>
+		<div class="medium"></div>
+		<div class="dark"></div>
+		<div class="green"></div>
+	</div>
 </body>
 </html>

@@ -36,9 +36,15 @@ switch( $page_slug ) {
 						echo '<div class="slides">';
 							$i = 0;
 							while ( have_rows( 'images', $id ) ) : the_row();
-								$image = get_sub_field( 'image', $id )['url'];
-								$caption = get_sub_field( 'caption', $id );
-								echo '<div class="slide" style="background-image:url(' . $image . ')"></div>';
+								$image = get_sub_field( 'image' );
+								// var_dump( $image );
+								$url = $image['url'];
+								$title = $image['title'];
+								$caption = $image['caption'];
+								echo '<div class="slide" >';
+									echo '<div class="image" title="' . $title . '" style="background-image:url(' . $url . ')"></div>';
+									echo '<div class="caption"><div class="inner">' . $caption .  '</div></div>';
+								echo '</div>';
 								$i++;
 							endwhile;
 						echo '</div>';
@@ -47,7 +53,6 @@ switch( $page_slug ) {
 							echo '<div class="arrow right" data-direction="right"></div>';
 						}
 					echo '</div>';
-					echo '<div class="vine"></div>';
 				}
 			endwhile;
 		} else {

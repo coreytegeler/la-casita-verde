@@ -19,7 +19,11 @@ jQuery ($) ->
         width: slidesLength * windowWidth
         x: left
       $slides.each (i, slide) ->
-        imageUrl = $(slide).find('.image').css('backgroundImage').replace('url(', '').replace(')', '').replace(/"/g, '')
+        imageUrl = $(slide).find('.image').css('backgroundImage')
+        if imageUrl
+          imageUrl = imageUrl.replace('url(', '').replace(')', '').replace(/"/g, '')
+        else 
+          return
         image = new Image
         $slide = $(this)
         image.onload = ->
@@ -42,7 +46,6 @@ jQuery ($) ->
     captionHeight = $caption.innerHeight()
     minHeight = $carousel.css('content').replace(/['"]+/g,'')
     height =  'calc('+minHeight+' + '+captionHeight+'px)'
-    console.log height
     $carousel.transition
       'height': height
     , 200, 'out'

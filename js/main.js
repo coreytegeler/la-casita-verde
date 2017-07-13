@@ -3,9 +3,23 @@
   jQuery(function($) {
     var initMapApi;
     $(function() {
+      var $palette;
+      $palette = $('#palette');
+      window.palette = {
+        light: '#f8f2e1',
+        medium: '#707377',
+        dark: '#2b1010',
+        green: '#33eb74'
+      };
       if (($('#map').length)) {
         return initMapApi();
       }
+    });
+    $('header .hover').mouseenter(function() {
+      return $('header').addClass('hover');
+    });
+    $('header .hover').mouseleave(function() {
+      return $('header').removeClass('hover');
     });
     initMapApi = function() {
       var $head, $script;
@@ -15,17 +29,14 @@
       return $head.append($script);
     };
     return window.initMap = function() {
-      var dark, light, location, map, mapStyle, mapStyleId, marker, medium;
-      light = '#f8f2e1';
-      medium = '#707377';
-      dark = '#1a1e47';
+      var location, map, mapStyle, mapStyleId, marker;
       mapStyle = new google.maps.StyledMapType([
         {
           'featureType': 'all',
           'elementType': 'geometry.fill',
           'stylers': [
             {
-              'color': light
+              'color': palette.light
             }
           ]
         }, {
@@ -33,7 +44,7 @@
           'elementType': 'geometry.stroke',
           'stylers': [
             {
-              'color': dark
+              'color': palette.dark
             }
           ]
         }, {
@@ -41,7 +52,7 @@
           'elementType': 'labels.text.fill',
           'stylers': [
             {
-              'color': '#14233E'
+              'color': palette.dark
             }
           ]
         }, {
@@ -49,7 +60,7 @@
           'elementType': 'labels.text.stroke',
           'stylers': [
             {
-              'color': light
+              'color': palette.light
             }
           ]
         }, {
@@ -57,7 +68,7 @@
           'elementType': 'geometry.fill',
           'stylers': [
             {
-              'color': dark
+              'color': palette.dark
             }
           ]
         }, {
@@ -65,7 +76,7 @@
           'elementType': 'geometry.fill',
           'stylers': [
             {
-              'color': dark
+              'color': palette.dark
             }
           ]
         }, {
@@ -73,7 +84,7 @@
           'elementType': 'geometry.fill',
           'stylers': [
             {
-              'color': dark
+              'color': palette.dark
             }
           ]
         }, {
@@ -81,7 +92,7 @@
           'elementType': 'geometry.fill',
           'stylers': [
             {
-              'color': dark
+              'color': palette.dark
             }
           ]
         }, {
@@ -89,7 +100,7 @@
           'elementType': 'geometry.stroke',
           'stylers': [
             {
-              'color': medium
+              'color': palette.medium
             }
           ]
         }, {

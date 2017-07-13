@@ -91,5 +91,33 @@ function get_projects() {
   return $projects;
 }
 
+function is_open() {
+  $about = get_page_by_path( 'about' );
+  if( have_rows( 'open_hours', $about ) ) {
+    while ( have_rows( 'open_hours', $about ) ) : the_row();
+      if( $day = get_sub_field( 'day' ) && $open = get_sub_field( 'open' ) && $close = get_sub_field( 'close' ) ) {
+        $openHoursArray[$day][$open] = $close;
+      }
+    endwhile;
+  }
+  date_default_timezone_set( 'America/New_York' );
+  $timestamp = time();
+  $status = 'close';
+  $currentTime = ( new DateTime() )->setTimestamp( $timestamp );
+  $times = $openHoursArray[date( 'l', $timestamp )];
+  if( $times ) {
+    foreach ( $times as $startTime => $endTime ) {
+      $startTime = DateTime::createFromFormat( 'h:iA', $startTime );
+      $endTime = DateTime::createFromFormat( 'h:iA', $endTime );
+      if ( ( $startTime < $currentTime ) && ( $currentTime < $endTime ) ) {
+        $status = 'open';
+        break;
+      }
+    }
+  }
+  return $status;
+}
+
+
 flush_rewrite_rules( false );
 ?>

@@ -1,7 +1,20 @@
 jQuery ($) ->
   $ ->
+    $palette = $('#palette')
+    window.palette = {
+      light: '#f8f2e1',
+      medium: '#707377',
+      dark: '#2b1010',
+      green: '#33eb74'
+    }
     if($('#map').length)
       initMapApi()
+
+  $('header .hover').mouseenter () ->
+    $('header').addClass('hover')
+  $('header .hover').mouseleave () ->
+    $('header').removeClass('hover')
+
 
   initMapApi = () ->
     $head = $('head')
@@ -11,54 +24,51 @@ jQuery ($) ->
 
 
   window.initMap = () ->
-    light = '#f8f2e1';
-    medium = '#707377';
-    dark = '#1a1e47';
     mapStyle = new (google.maps.StyledMapType)([
       {
         'featureType': 'all'
         'elementType': 'geometry.fill'
-        'stylers': [ { 'color': light } ]
+        'stylers': [ { 'color': palette.light } ]
       }
       {
         'featureType': 'all'
         'elementType': 'geometry.stroke'
-        'stylers': [ { 'color': dark } ]
+        'stylers': [ { 'color': palette.dark } ]
       }
       {
         'featureType': 'all'
         'elementType': 'labels.text.fill'
-        'stylers': [ { 'color': '#14233E' } ]
+        'stylers': [ { 'color': palette.dark } ]
       }
       {
         'featureType': 'all'
         'elementType': 'labels.text.stroke'
-        'stylers': [ { 'color': light } ]
+        'stylers': [ { 'color': palette.light } ]
       }
       {
         'featureType': 'road.arterial'
         'elementType': 'geometry.fill'
-        'stylers': [ { 'color': dark } ]
+        'stylers': [ { 'color': palette.dark } ]
       }
       {
         'featureType': 'road.local'
         'elementType': 'geometry.fill'
-        'stylers': [ { 'color': dark } ]
+        'stylers': [ { 'color': palette.dark } ]
       }
       {
         'featureType': 'road.highway.controlled_access'
         'elementType': 'geometry.fill'
-        'stylers': [ { 'color': dark } ]
+        'stylers': [ { 'color': palette.dark } ]
       }
       {
         'featureType': 'transit.line'
         'elementType': 'geometry.fill'
-        'stylers': [ { 'color': dark } ]
+        'stylers': [ { 'color': palette.dark } ]
       }
       {
         'featureType': 'transit.line'
         'elementType': 'geometry.stroke'
-        'stylers': [ { 'color': medium } ]
+        'stylers': [ { 'color': palette.medium } ]
       }
       {
         'featureType': 'water'
